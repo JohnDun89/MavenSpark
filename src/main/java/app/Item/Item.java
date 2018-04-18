@@ -2,6 +2,7 @@ package app.Item;
 
 public class Item {
 
+;
     private String name;
     private Double price;
     private Integer quanitityInMachine;
@@ -22,6 +23,10 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setQuanitityInMachine(Integer qunatity) {
+        this.quanitityInMachine += qunatity;
     }
 
     public void setPrice(Double price) {
