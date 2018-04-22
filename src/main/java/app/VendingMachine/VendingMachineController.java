@@ -5,9 +5,6 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class VendingMachine {
 
@@ -17,13 +14,12 @@ public class VendingMachine {
         Gson gson = new Gson();
         return gson.toJson(VendingMachineModel.getAllItems());
     };
-
-
-    public static Route postItems = (Request request, Response response ) -> {
-        Map<String, Object> model = new HashMap<>();
-        System.out.println("post request made");
-        return VendingMachineModel.test();
-    };
+//
+////
+//    public static void putItems = (Request request, Response response ) -> {
+//        String raw = request.queryMap().get("juice").get("body").value();
+//        return raw;
+//    };
 
 
 
