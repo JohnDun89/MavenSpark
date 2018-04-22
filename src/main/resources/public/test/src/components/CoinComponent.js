@@ -13,12 +13,10 @@ class CoinComponent extends React.Component {
             updated: false,
             total: 0
         };   
-        this.displayTotal = this.displayTotal.bind(this)
-        this.reciveValue = this.reciveValue.bind(this)
-        // this.updateMehtod = this.updateMethod.bind(this)
-        // this.getTotal = this.getTotal.bind(this)
-        // this.postTotal = this.postTotal.bind(this)
-this.updateRequest = this.updateRequest.bind(this)
+       
+        this.postTotal = this.postTotal.bind(this)
+        this.getTotal = this.getTotal.bind(this)
+        this.updateRequest = this.updateRequest.bind(this)
 
     }
 
@@ -26,63 +24,37 @@ this.updateRequest = this.updateRequest.bind(this)
 
         const stateSelect = this.state[type]
         console.log(type)
-        this.setState((state) => ({ [type]: this.state[type] +1 }))
-        console.log(this.state.dollar)
-        // this.reciveValue()
-        // this.displayTotal()
+        this.setState({ [type]: this.state[type] +1 }, () => {this.postTotal()
+        })
+        // console.log(this.state.dollar)
+        // this.postTotal()
+    }
 
+
+    postTotal = () => {
+    const sendObject = this.state
+      return axios.put(`http://localhost:4567/items/coinsin/`, sendObject).then(res =>{
+          console.log(res)
+          this.getTotal()
+      })
 
     }
 
-    displayTotal  () {
-       const sendObject = this.state
-        axios.put(`http://localhost:4567/items/coinsin/`, sendObject )
-            .then(function (response) {
-                console.log('saved successfully', response.data)
-            })
-    }
-
-    reciveValue() {
+    getTotal = () => {
         axios.get(`http://localhost:4567/items/getcoins`)
             .then(res => {
                 console.log(res)
                 const resData = res.data;
                 const newTotal = resData
-                
-                this.setState({ total: newTotal })
-            });
-    }
-
-    getTotal = () => {
-       return axios.get(`http://localhost:4567/items/getcoins`)
-            .then(res => {
-                console.log(res)
-                const resData = res.data;
-                const newTotal = resData
 
                 this.setState({ total: newTotal })
             });
     }
 
-    postTotal = () => {
-    const sendObject = this.state
-      return axios.put(`http://localhost:4567/items/coinsin/`, sendObject)
 
-    }
 
-    // updateMethod = () => {
-    //     axios.all([this.postTotal(), this.getTotal()])
-    //         .then(axios.spread(function (postRes, getRes) {
-    //             console.log('User', getRes.data);
-    //             console.log('Repositories', postRes.data);
-    //             const resData = getRes.data;
-    //             const newTotal = resData
-    //             this.setState({ total: newTotal })
-    // }))
-    // }
-
-    componentWillUpdate() {
-        this.updateRequest()
+    componentDidUpdate() {
+        // this.updateRequest()
     }
 
     updateRequest() {
@@ -90,6 +62,7 @@ this.updateRequest = this.updateRequest.bind(this)
             this.setState({ updated: true })
             axios.get(`http://localhost:4567/items/getcoins`)
                 .then(res => {
+                    console.log(res)
                     const resData = res.data;
                     const newTotal = resData
 
