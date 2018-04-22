@@ -21,6 +21,7 @@ class CoinComponent extends React.Component {
     }
 
     insertCoin = (type) => {
+        this.setState({ updated: false })
 
         const stateSelect = this.state[type]
         console.log(type)
@@ -36,6 +37,7 @@ class CoinComponent extends React.Component {
       return axios.put(`http://localhost:4567/items/coinsin/`, sendObject).then(res =>{
           console.log(res)
           this.getTotal()
+
       })
 
     }
@@ -48,28 +50,36 @@ class CoinComponent extends React.Component {
                 const newTotal = resData
 
                 this.setState({ total: newTotal })
+
             });
     }
 
 
 
-    componentDidUpdate() {
-        // this.updateRequest()
+    componentWillUpdate() {
+        this.updateRequest()
     }
 
-    updateRequest() {
+    // componentDidUpdate(){
+    //     this.updateRequest()
+    // }
+
+    updateRequest =() => {
         if (this.state.updated === false) {
             this.setState({ updated: true })
             axios.get(`http://localhost:4567/items/getcoins`)
                 .then(res => {
+                    console.log("hit")
                     console.log(res)
                     const resData = res.data;
                     const newTotal = resData
 
                     this.setState({ total: newTotal })
+                    console.log(this.state.total)
                 });
         }
     }
+
 
 
     
