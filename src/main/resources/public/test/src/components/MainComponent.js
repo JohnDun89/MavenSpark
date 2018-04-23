@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemsDisplay from "./ItemsDisplay.js";
+import MaintanenceInterface from "./MaintenanceInterface.js";
 import CustomerInterface from "./CustomerInterface.js";
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import axios from 'axios';
@@ -69,7 +69,7 @@ this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
     render() {
         return (
             <div>
-                {this.renderToggle(CustomerInterface, ItemsDisplay, this.state.BoxOne, this.toggleBoxOneState, this.transition)} 
+                {this.renderToggle(CustomerInterface, MaintanenceInterface, this.state.BoxOne, this.toggleBoxOneState, this.transition)} 
             </div>
         );
     }

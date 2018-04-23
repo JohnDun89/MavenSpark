@@ -45,6 +45,7 @@ class CoinComponent extends React.Component {
                 const resData = res.data;
                 const newTotal = resData
                 this.setState({ total: newTotal })
+                this.props.total(this.state.total)
             });
     }
 

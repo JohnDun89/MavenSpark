@@ -1,14 +1,26 @@
 import React from 'react';
 import axios from 'axios';
 import CoinComponent from './CoinComponent.js'
+import SelectItem from './SelectItem.js'
+import SlectItem from './SelectItem.js';
 
 class CustomerInterface extends React.Component {
     constructor(props) {
         super(props);
         this.state = { items: [],
-        updated: false };
+        updated: false,
+        selectedItem: " ",
+        selectedValue: " ",
+        total: 0,
+  
+    };
 
         this.updateRequest = this.updateRequest.bind(this)
+        this.chocolate = this.chocolate.bind(this)
+        this.juice = this.juice.bind(this)
+        this.crisps = this.crisps.bind(this)
+        this.total = this.total.bind(this)
+        this.purchase = this.purchase.bind(this)
     }
 
     componentWillMount () {
@@ -36,9 +48,40 @@ class CustomerInterface extends React.Component {
         }
     }
 
+    chocolate() {
+        this.setState({selectedItem: "chocolate"})
+        this.setState({selectedValue: 0.65})
+    }
+
+    crisps() {
+        this.setState({selectedItem: "crisps"})
+        this.setState({ selectedValue: 1 })
+
+    }
+
+    juice() {
+        this.setState({ selectedItem: "juice" })
+        this.setState({ selectedValue: 1.5 })
+
+    }
+
+    total(input) {
+        this.setState({ total: input })
+        console.log(this.state.total)
+
+    }
+
+    purchase = () => {
+        if (this.state.selectedValue === this.state.total ){
+            console.log("item purchased")
+        }
+    }
+
+
     render() {
         return (
             <div>
+                <button onClick={this.props.action}>Restock</button>
                 <ul>
                     {this.state.items.map(item =>
                         <li>
@@ -46,10 +89,15 @@ class CustomerInterface extends React.Component {
                         </li>)
                     }
                 </ul>
-                <button onClick={this.props.action}>Restock</button>
-                <div>
-                    < CoinComponent />
+                <h2> {this.state.selectedItem}</h2>
+               
+                  
+                <div>       
+                    < SelectItem crisp={this.crisps} choc={this.chocolate}  juice={this.juice}/>           
+                    < CoinComponent total={this.total}/>
+                    <button onClick={this.purchase}>BuyItem</button>
                 </div>
+
             </div>
             
         );

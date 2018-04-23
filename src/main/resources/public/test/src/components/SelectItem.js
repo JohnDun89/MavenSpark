@@ -1,17 +1,22 @@
 import React from 'react';
 
-class SelectItem extends Component {
+class SlectItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { };
     }
+
+
+
     render() {
         return (
             <div>
-
-            <div>
+                <button onClick={this.props.choc} >Chocolate</button>
+                <button onClick={this.props.crisp}>Crisps</button>
+                <button onClick={this.props.juice}>Juice</button>
+            </div>
         );
     }
 }
 
-export default SelectItem ;
+export default SlectItem;
