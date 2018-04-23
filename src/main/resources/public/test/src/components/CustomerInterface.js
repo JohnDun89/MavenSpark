@@ -23,12 +23,14 @@ class CustomerInterface extends React.Component {
         this.purchase = this.purchase.bind(this)
     }
 
+
     componentWillMount () {
         axios.get(`http://localhost:4567/items/`)
             .then(res => {
                 const items = res.data;
                 this.setState({ items })
                 console.log(res)
+
             });
     }
 
@@ -56,7 +58,6 @@ class CustomerInterface extends React.Component {
     crisps() {
         this.setState({selectedItem: "Crisps"})
         this.setState({ selectedValue: 1 })
-
     }
 
     juice() {
@@ -76,6 +77,7 @@ class CustomerInterface extends React.Component {
             const body = this.state.selectedItem
             console.log("item purchased")
             axios.post(`http://localhost:4567/buy/`, body)
+           
         }
     }
 
@@ -91,9 +93,7 @@ class CustomerInterface extends React.Component {
                         </li>)
                     }
                 </ul>
-                <h2> {this.state.selectedItem}</h2>
-               
-                  
+                <h2> {this.state.selectedItem}</h2>                  
                 <div>       
                     < SelectItem crisp={this.crisps} choc={this.chocolate}  juice={this.juice}/>           
                     < CoinComponent total={this.total}/>
