@@ -99,16 +99,16 @@ class ItemsDisplay extends React.Component {
         return (
             <div> 
                 <h1>Contents</h1>
-                    <ul>
+                    
                         {this.state.items.map(item => 
-                        <li>
+                    <div>
                             
                             {item.name  + " number:" + item.quanitityInMachine}  
                             <button onClick={this.increment.bind(this, item.name, "add")}>Plus</button> 
                             <button onClick={this.increment.bind(this, item.name, "sub")}>Minus</button> 
-                        </li>)
-                        }
-                    </ul>
+                   </div>    )
+                         }
+                  
                 <button onClick={ this.submit }>Submit</button>
                 <div>{this.juice}</div>
             </div>

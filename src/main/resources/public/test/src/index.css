@@ -1,13 +1,53 @@
-body {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+
+.App {
+ 
+  
 }
 
 
+
+
+
+body {
+  
+
+  margin:0 auto;
+  width: 400px;
+  justify-content: center;
+  font-family:  'Lato', sans-serif;
+  font-weight: bold;
+}
+
+#list{
+
+  padding: 5px;
+  margin: 5px;
+}
 
 #popupContainer {
 
 }
+
+
+#main-component {
+ text-align: center;
+  border:2px solid lightslategray;
+
+
+}
+
+button {
+  margin: 5px;
+  padding: 5px;
+  border:2px solid cornflowerblue;
+  background-color:#fff;
+}
+
+button:hover {
+    background-color:tomato;
+    color: #fff;
+
+}
+
+
+

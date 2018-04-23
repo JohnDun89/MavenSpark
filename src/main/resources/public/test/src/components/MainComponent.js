@@ -3,6 +3,8 @@ import MaintanenceInterface from "./MaintenanceInterface.js";
 import CustomerInterface from "./CustomerInterface.js";
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import axios from 'axios';
+import Popup from 'react-popup';
+
 
 
 class MainComponent extends React.Component {
@@ -30,15 +32,8 @@ this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
 
 
     transition(Component, callback, boolean) {
-        return (
-            <ReactCSSTransitionGroup
-                transitionName="main-react-transition"
-                transitionAppear={true}
-                transitionAppearTimeout={1000}
-                transitionLeaveTimeout={1000}
-                transitionEnterTimeout={1000}>
+        return (         
                 <Component action={callback } />
-            </ReactCSSTransitionGroup>
         )
     }
 
@@ -53,23 +48,24 @@ this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
         if (StateBoolean === false) {
             return (
                 <div  >
-                    <ReactCSSTransitionGroup
-                        transitionName="main-react-transition"
-                        transitionAppear={true}
-                        transitionAppearTimeout={1000}
-                        transitionLeaveTimeout={1000}
-                        transitionEnterTimeout={1000}>
+                  
                         <Component2 close={toggleFunction || StateBoolean} />
-                    </ReactCSSTransitionGroup>
+              
                 </div>
             )
         }
     }
 
     render() {
+        document.getElementById('popupContainer')
+
         return (
-            <div>
+            <div id="main-component">
+            <div id="box">
                 {this.renderToggle(CustomerInterface, MaintanenceInterface, this.state.BoxOne, this.toggleBoxOneState, this.transition)} 
+           </div>
+                <Popup />
+
             </div>
         );
     }

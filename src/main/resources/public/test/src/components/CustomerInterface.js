@@ -104,14 +104,15 @@ class CustomerInterface extends React.Component {
                 <button onClick={this.props.action}>Restock</button>
                 <ul>
                     {this.state.items.map(item =>
-                        <li>
-                            {item.name + " £:" + item.price + "  Quantity: " + item.quanitityInMachine}                        
-                        </li>)
+                        <div id="list">
+                            {"£:" + item.price + "    "+ item.name + "  Quantity: " + item.quanitityInMachine}                        
+                        </div>)
                     }
                 </ul>
-                <h2> {this.state.selectedItem}</h2>                  
+                          
                 <div>       
                     < SelectItem crisp={this.crisps} choc={this.chocolate}  juice={this.juice}/>           
+                    <h2> {this.state.selectedItem}</h2>      
                     < CoinComponent total={this.total}  ref="child"/>
                     <button onClick={this.purchase} >BuyItem</button>
                 </div>

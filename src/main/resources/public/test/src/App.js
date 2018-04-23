@@ -24,11 +24,9 @@ class App extends Component {
 
 
   render() {
-    document.getElementById('popupContainer')
     return (
-      <div className="App">
+      <div >
         < MainComponent />
-        <Popup />
       </div>
     );
   }
