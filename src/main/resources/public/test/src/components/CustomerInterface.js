@@ -49,18 +49,18 @@ class CustomerInterface extends React.Component {
     }
 
     chocolate() {
-        this.setState({selectedItem: "chocolate"})
+        this.setState({selectedItem: "Chocolate"})
         this.setState({selectedValue: 0.65})
     }
 
     crisps() {
-        this.setState({selectedItem: "crisps"})
+        this.setState({selectedItem: "Crisps"})
         this.setState({ selectedValue: 1 })
 
     }
 
     juice() {
-        this.setState({ selectedItem: "juice" })
+        this.setState({ selectedItem: "Juice" })
         this.setState({ selectedValue: 1.5 })
 
     }
@@ -73,7 +73,9 @@ class CustomerInterface extends React.Component {
 
     purchase = () => {
         if (this.state.selectedValue === this.state.total ){
+            const body = this.state.selectedItem
             console.log("item purchased")
+            axios.post(`http://localhost:4567/buy/`, body)
         }
     }
 
