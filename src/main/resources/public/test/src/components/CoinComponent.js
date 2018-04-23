@@ -16,30 +16,26 @@ class CoinComponent extends React.Component {
        
         this.postTotal = this.postTotal.bind(this)
         this.getTotal = this.getTotal.bind(this)
-        this.updateRequest = this.updateRequest.bind(this)
-
+        this.returnCoins = this.returnCoins.bind(this)
     }
 
     insertCoin = (type) => {
         this.setState({ updated: false })
-
         const stateSelect = this.state[type]
-        console.log(type)
-        this.setState({ [type]: this.state[type] +1 }, () => {this.postTotal()
+        console.log(this.state.total)
+        this.setState({ [type]: this.state[type] +1 }, () => {this.postTotal()    
         })
-        // console.log(this.state.dollar)
-        // this.postTotal()
     }
-
 
     postTotal = () => {
     const sendObject = this.state
-      return axios.put(`http://localhost:4567/items/coinsin/`, sendObject).then(res =>{
-          console.log(res)
+       axios.post(`http://localhost:4567/items/coinsin/`, sendObject).then(res =>{
+          console.log("working",res.status)
           this.getTotal()
-
-      })
-
+      }).catch(error =>{
+          console.log(error)
+          this.getTotal()
+      }) 
     }
 
     getTotal = () => {
@@ -48,42 +44,19 @@ class CoinComponent extends React.Component {
                 console.log(res)
                 const resData = res.data;
                 const newTotal = resData
-
                 this.setState({ total: newTotal })
-
             });
     }
 
-
-
-    componentWillUpdate() {
-        this.updateRequest()
+    returnCoins = (callback) => {
+        this.setState({total : 0})
+        this.setState({nickle: 0})
+        this.setState({dime: 0})
+        this.setState({quarter: 0})
+        this.setState({dollar: 0})
     }
-
-    // componentDidUpdate(){
-    //     this.updateRequest()
-    // }
-
-    updateRequest =() => {
-        if (this.state.updated === false) {
-            this.setState({ updated: true })
-            axios.get(`http://localhost:4567/items/getcoins`)
-                .then(res => {
-                    console.log("hit")
-                    console.log(res)
-                    const resData = res.data;
-                    const newTotal = resData
-
-                    this.setState({ total: newTotal })
-                    console.log(this.state.total)
-                });
-        }
-    }
-
-
 
     
-
     render() {
         return (
             <div>
@@ -98,6 +71,7 @@ class CoinComponent extends React.Component {
                 <p>{this.state.dollar}</p>
                 <div>
                     <h2>{this.state.total}</h2>
+                    <button onClick={this.returnCoins}>Return Coins</button>
                 </div>
             </div>
             
