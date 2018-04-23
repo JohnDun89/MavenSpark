@@ -12,11 +12,11 @@ Using React, Java Spark, Maven, and nodeJS.
 
   3. Navigate src > main > java > app > main and run Main.java to start backend.
 
-  4. The front end is located in root > FrontEnd.
+  4. The front end is located in the root, > FrontEnd.
 
-  5. Navigate there and run npm build.
+  5. Navigate there and 'npm run build'.
 
-  6. In the same folder, run npm start.
+  6. In the same folder, 'npm star't.
 
   7. Once both the back end and front are working, navigate to "http://localhost:3000/"
 
