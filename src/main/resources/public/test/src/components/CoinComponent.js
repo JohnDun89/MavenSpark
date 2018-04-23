@@ -45,9 +45,7 @@ class CoinComponent extends React.Component {
                 console.log(res)
                 const resData = res.data;
                 const newTotal = resData
-                const trimed = newTotal.toFixed(2)
-                const parsed = parseInt(trimed,10)
-                this.setState({ total: parsed })
+                this.setState({ total: newTotal })
                 this.props.total(this.state.total)
             });
     }
@@ -73,6 +71,9 @@ class CoinComponent extends React.Component {
 
     
     render() {
+
+        let total = this.state.total
+        let displayValue = total.toFixed(2)
         return (
             <div>
                 <h2>Insert Coins</h2>
@@ -85,7 +86,7 @@ class CoinComponent extends React.Component {
                 <button onClick={this.insertCoin.bind(this, "dollar")}>Dollar</button>
                 <p>{this.state.dollar}</p>
                 <div>
-                    <h2>{this.state.total}</h2>
+                    <h2>{displayValue}</h2>
                     <button onClick={this.returnCoins}>Return Coins</button>
                 </div>
             </div>

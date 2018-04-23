@@ -64,7 +64,7 @@ class CustomerInterface extends React.Component {
 
     juice() {
         this.setState({ selectedItem: "Juice" })
-        this.setState({ selectedValue: 0.50 })
+        this.setState({ selectedValue: 1.50 })
 
     }
 
