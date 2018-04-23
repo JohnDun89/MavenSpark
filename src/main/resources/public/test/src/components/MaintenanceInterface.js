@@ -37,10 +37,6 @@ class ItemsDisplay extends React.Component {
             })
     }
 
-
-
-    
-
     addItem = () => {
         this.props.close
         const response = this.Return
@@ -93,22 +89,16 @@ class ItemsDisplay extends React.Component {
         return(<div><p>{this.Return[name]}</p></div>)
     }
 
-
- 
     render() {
         return (
             <div> 
-                <h1>Contents</h1>
-                    
+                <h1>Contents</h1>                    
                         {this.state.items.map(item => 
-                    <div>
-                            
+                         <div>                            
                             {item.name  + " number:" + item.quanitityInMachine}  
                             <button onClick={this.increment.bind(this, item.name, "add")}>Plus</button> 
                             <button onClick={this.increment.bind(this, item.name, "sub")}>Minus</button> 
-                   </div>    )
-                         }
-                  
+                        </div>)}                 
                 <button onClick={ this.submit }>Submit</button>
                 <div>{this.juice}</div>
             </div>

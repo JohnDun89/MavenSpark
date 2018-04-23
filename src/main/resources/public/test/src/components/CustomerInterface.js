@@ -5,7 +5,6 @@ import SelectItem from './SelectItem.js'
 import SlectItem from './SelectItem.js';
 import Popup from 'react-popup';
 
-
 class CustomerInterface extends React.Component {
     constructor(props) {
         super(props);
@@ -25,14 +24,12 @@ class CustomerInterface extends React.Component {
         this.purchase = this.purchase.bind(this)
     }
 
-
     componentWillMount () {
         axios.get(`http://localhost:4567/items/`)
             .then(res => {
                 const items = res.data;
                 this.setState({ items })
                 console.log(res)
-
             });
     }
 
@@ -65,17 +62,14 @@ class CustomerInterface extends React.Component {
     juice() {
         this.setState({ selectedItem: "Juice" })
         this.setState({ selectedValue: 1.50 })
-
     }
 
     total(input) {
         this.setState({ total: input })
         console.log(this.state.total)
-
     }
 
-    purchase = () => {
-        
+    purchase = () => {       
         if (this.state.selectedValue === this.state.total ){
             const body = this.state.selectedItem
             console.log("item purchased")
@@ -90,13 +84,9 @@ class CustomerInterface extends React.Component {
                         console.log(res)
                         this.refs.child.display();
                         Popup.alert('Please take your item');
-
                     });
-            })
-        }}
-
-
-
+                })
+            }}
 
     render() {
         return (
@@ -108,15 +98,13 @@ class CustomerInterface extends React.Component {
                             {"£:" + item.price + "    "+ item.name + "  Quantity: " + item.quanitityInMachine}                        
                         </div>)
                     }
-                </ul>
-                          
+                </ul>                          
                 <div>       
-                    < SelectItem crisp={this.crisps} choc={this.chocolate}  juice={this.juice}/>           
+                        < SelectItem crisp={this.crisps} choc={this.chocolate}  juice={this.juice}/>           
                     <h2> {this.state.selectedItem}</h2>      
-                    < CoinComponent total={this.total}  ref="child"/>
+                        < CoinComponent total={this.total}  ref="child"/>
                     <button onClick={this.purchase} >BuyItem</button>
                 </div>
-
             </div>
             
         );

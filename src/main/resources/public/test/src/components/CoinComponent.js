@@ -17,7 +17,6 @@ class CoinComponent extends React.Component {
         this.postTotal = this.postTotal.bind(this)
         this.getTotal = this.getTotal.bind(this)
         this.returnCoins = this.returnCoins.bind(this)
-        // this.reset = this.reset.returnCoins.bind(this)
     }
 
     insertCoin = (type) => {
@@ -54,7 +53,6 @@ class CoinComponent extends React.Component {
         this.returnCoins()
     }
 
-
     returnCoins ()  {
         this.setState({total : 0})
         this.setState({nickle: 0})
@@ -63,35 +61,25 @@ class CoinComponent extends React.Component {
         this.setState({dollar: 0})
     }
 
-
-
-
-
-
-
-    
     render() {
-
         let total = this.state.total
         let displayValue = total.toFixed(2)
         return (
             <div>
                 <h2>Insert Coins</h2>
-                <button onClick={this.insertCoin.bind(this, "nickle")}>Nickle</button>
+                    <button onClick={this.insertCoin.bind(this, "nickle")}>Nickle</button>
                 <p>{this.state.nickle}</p>
-                <button onClick={this.insertCoin.bind(this,"dime")}>Dime</button>
+                    <button onClick={this.insertCoin.bind(this,"dime")}>Dime</button>
                 <p>{this.state.dime}</p>
-                <button onClick={this.insertCoin.bind(this, "quarter")}>Quarter</button>
+                    <button onClick={this.insertCoin.bind(this, "quarter")}>Quarter</button>
                 <p>{this.state.quarter}</p>
-                <button onClick={this.insertCoin.bind(this, "dollar")}>Dollar</button>
+                    <button onClick={this.insertCoin.bind(this, "dollar")}>Dollar</button>
                 <p>{this.state.dollar}</p>
                 <div>
-                    <h2>{displayValue}</h2>
+                  <h2>{displayValue}</h2>
                     <button onClick={this.returnCoins}>Return Coins</button>
                 </div>
-            </div>
-            
-            
+            </div>           
         );
     }
 }

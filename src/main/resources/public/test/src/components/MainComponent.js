@@ -13,7 +13,6 @@ class MainComponent extends React.Component {
         this.state = { BoxOne: true };
 
 this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
-
     }
 
     toggleBoxOneState() {
@@ -29,7 +28,6 @@ this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
                 console.log(res)
             })
     }
-
 
     transition(Component, callback, boolean) {
         return (         
@@ -47,10 +45,8 @@ this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
         }
         if (StateBoolean === false) {
             return (
-                <div  >
-                  
-                        <Component2 close={toggleFunction || StateBoolean} />
-              
+                <div >                  
+                        <Component2 close={toggleFunction || StateBoolean} />              
                 </div>
             )
         }
@@ -65,7 +61,6 @@ this.toggleBoxOneState = this.toggleBoxOneState.bind(this)
                 {this.renderToggle(CustomerInterface, MaintanenceInterface, this.state.BoxOne, this.toggleBoxOneState, this.transition)} 
            </div>
                 <Popup />
-
             </div>
         );
     }
