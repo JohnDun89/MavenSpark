@@ -17,6 +17,7 @@ class CoinComponent extends React.Component {
         this.postTotal = this.postTotal.bind(this)
         this.getTotal = this.getTotal.bind(this)
         this.returnCoins = this.returnCoins.bind(this)
+        // this.reset = this.reset.returnCoins.bind(this)
     }
 
     insertCoin = (type) => {
@@ -49,13 +50,24 @@ class CoinComponent extends React.Component {
             });
     }
 
-    returnCoins = (callback) => {
+    display = () => {
+        this.returnCoins()
+    }
+
+
+    returnCoins ()  {
         this.setState({total : 0})
         this.setState({nickle: 0})
         this.setState({dime: 0})
         this.setState({quarter: 0})
         this.setState({dollar: 0})
     }
+
+
+
+
+
+
 
     
     render() {

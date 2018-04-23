@@ -11,7 +11,7 @@ class CustomerInterface extends React.Component {
         updated: false,
         selectedItem: " ",
         selectedValue: " ",
-        total: 0,
+        total: 0
   
     };
 
@@ -76,10 +76,21 @@ class CustomerInterface extends React.Component {
         if (this.state.selectedValue === this.state.total ){
             const body = this.state.selectedItem
             console.log("item purchased")
-            axios.post(`http://localhost:4567/buy/`, body)
-           
-        }
-    }
+            axios.post(`http://localhost:4567/buy/`, body).then(res =>{
+                console.log(res)
+            }).catch(error => {
+                console.log(error)
+                axios.get(`http://localhost:4567/items/`)
+                    .then(res => {
+                        const items = res.data;
+                        this.setState({ items })                       
+                        console.log(res)
+                        this.refs.child.display();
+                    });
+            })
+        }}
+
+
 
 
     render() {
@@ -96,8 +107,8 @@ class CustomerInterface extends React.Component {
                 <h2> {this.state.selectedItem}</h2>                  
                 <div>       
                     < SelectItem crisp={this.crisps} choc={this.chocolate}  juice={this.juice}/>           
-                    < CoinComponent total={this.total}/>
-                    <button onClick={this.purchase}>BuyItem</button>
+                    < CoinComponent total={this.total}  ref="child"/>
+                    <button onClick={this.purchase} >BuyItem</button>
                 </div>
 
             </div>
