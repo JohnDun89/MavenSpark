@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import immutable from 'object-path-immutable';
 
+
 class ItemsDisplay extends React.Component {
     constructor(props) {
         super(props);
@@ -109,6 +110,7 @@ class ItemsDisplay extends React.Component {
                         }
                     </ul>
                 <button onClick={ this.submit }>Submit</button>
+                <div>{this.juice}</div>
             </div>
         );
     }

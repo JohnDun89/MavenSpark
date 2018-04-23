@@ -10,6 +10,7 @@
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",
+    "react-popup": "^0.9.2",
     "react-scripts": "1.1.1"
   },
   "scripts": {

@@ -3,6 +3,8 @@ import axios from 'axios';
 import CoinComponent from './CoinComponent.js'
 import SelectItem from './SelectItem.js'
 import SlectItem from './SelectItem.js';
+import Popup from 'react-popup';
+
 
 class CustomerInterface extends React.Component {
     constructor(props) {
@@ -57,12 +59,12 @@ class CustomerInterface extends React.Component {
 
     crisps() {
         this.setState({selectedItem: "Crisps"})
-        this.setState({ selectedValue: 1 })
+        this.setState({ selectedValue: 1.00 })
     }
 
     juice() {
         this.setState({ selectedItem: "Juice" })
-        this.setState({ selectedValue: 1.5 })
+        this.setState({ selectedValue: 0.50 })
 
     }
 
@@ -73,6 +75,7 @@ class CustomerInterface extends React.Component {
     }
 
     purchase = () => {
+        
         if (this.state.selectedValue === this.state.total ){
             const body = this.state.selectedItem
             console.log("item purchased")
@@ -86,6 +89,8 @@ class CustomerInterface extends React.Component {
                         this.setState({ items })                       
                         console.log(res)
                         this.refs.child.display();
+                        Popup.alert('Please take your item');
+
                     });
             })
         }}

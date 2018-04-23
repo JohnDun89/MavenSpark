@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Main from "./main.js";
 import axios from 'axios';
+import Popup from 'react-popup';
 
 import MainComponent from "./components/MainComponent.js";
 
@@ -18,10 +19,16 @@ class App extends Component {
   }
 
 
+  
+
+
+
   render() {
+    document.getElementById('popupContainer')
     return (
       <div className="App">
         < MainComponent />
+        <Popup />
       </div>
     );
   }
