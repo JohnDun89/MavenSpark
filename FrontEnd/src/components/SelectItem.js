@@ -6,8 +6,6 @@ class SlectItem extends React.Component {
         this.state = { };
     }
 
-
-
     render() {
         return (
             <div>
